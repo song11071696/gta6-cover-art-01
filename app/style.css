@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'Anton';
+  src: url('./fonts/Anton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: #12081f; color: #f5f0ff; font: 15px/1.45 system-ui, -apple-system, sans-serif; }
+
+.topbar {
+  display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;
+  padding: 14px 20px;
+  background: linear-gradient(90deg, #2b0f54, #7a1030 55%, #e8481f);
+  border-bottom: 3px solid #ffe14d;
+}
+.brand { display: flex; gap: 14px; align-items: center; }
+.brand-mark {
+  display: grid; place-items: center; width: 52px; height: 52px; flex: none;
+  font-family: Anton, sans-serif; font-size: 22px; color: #14101e;
+  background: #ffe14d; border: 3px solid #14101e; border-radius: 10px;
+  transform: rotate(-4deg);
+}
+.brand h1 { margin: 0; font-family: Anton, sans-serif; font-size: 26px; letter-spacing: 1px; font-weight: 400; }
+.brand p { margin: 2px 0 0; color: #ffd9e8; font-size: 13px; }
+.exports { display: flex; flex-wrap: wrap; gap: 8px; }
+
+button, .file-btn {
+  font: inherit; font-weight: 700; padding: 9px 13px; border: 2px solid #f5f0ff;
+  border-radius: 8px; background: rgba(18, 8, 31, 0.55); color: #fff; cursor: pointer;
+}
+button:hover, .file-btn:hover { background: #ffe14d; color: #14101e; border-color: #ffe14d; }
+button.primary { background: #ffe14d; color: #14101e; border-color: #14101e; }
+button.active { background: #00e5ff; color: #14101e; border-color: #14101e; }
+button:disabled { opacity: 0.45; cursor: default; }
+
+.app { display: flex; gap: 24px; padding: 20px; align-items: flex-start; }
+.controls { width: 320px; flex: none; display: flex; flex-direction: column; gap: 16px; }
+.group {
+  background: #1e0c33; border: 1px solid #4a2a6e; border-radius: 12px;
+  padding: 14px; display: flex; flex-direction: column; gap: 10px;
+}
+.group h2 { margin: 0; font-family: Anton, sans-serif; font-size: 17px; letter-spacing: 1px; font-weight: 400; color: #ffe14d; }
+.hint { margin: 0; color: #c9b8e0; font-size: 13px; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px; }
+label.check { flex-direction: row; align-items: center; gap: 8px; }
+input[type=text], select {
+  font: inherit; padding: 8px 10px; border: 1px solid #6b4a9e; border-radius: 6px;
+  background: #12081f; color: #f5f0ff;
+}
+input[type=range] { width: 100%; accent-color: #ff2e88; }
+.file-btn { text-align: center; }
+.file-btn input { display: none; }
+.dropzone {
+  border: 2px dashed #6b4a9e; border-radius: 8px; padding: 18px 10px;
+  text-align: center; color: #c9b8e0;
+}
+.dropzone.over { border-color: #ffe14d; background: rgba(255, 225, 77, 0.12); color: #ffe14d; }
+.thumbs { display: flex; gap: 8px; flex-wrap: wrap; }
+.thumbs img {
+  width: 64px; height: 64px; object-fit: cover; border-radius: 6px;
+  border: 2px solid #6b4a9e; cursor: pointer;
+}
+.thumbs img.selected { border-color: #ffe14d; outline: 2px solid #ffe14d; }
+.pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill-row button { padding: 7px 10px; font-size: 13px; }
+.row { display: flex; gap: 8px; }
+.row button { flex: 1; }
+#status { margin: 0; color: #7df9ff; min-height: 1.2em; font-size: 13px; }
+
+.stage { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 0; }
+#cover {
+  width: min(72vh, 100%); height: auto; aspect-ratio: 1 / 1;
+  box-shadow: 0 12px 44px rgba(0, 0, 0, 0.6); border-radius: 4px; cursor: crosshair;
+  background: #2b1838;
+}
+.stage-note { margin: 0; color: #c9b8e0; font-size: 13px; text-align: center; }
+
+body.shot-cover .topbar, body.shot-cover .controls, body.shot-cover .stage-note { display: none; }
+body.shot-cover .app { padding: 0; }
+body.shot-cover .stage { width: 100%; }
+body.shot-cover #cover { width: 100vw; height: 100vh; box-shadow: none; border-radius: 0; }
+
+@media (max-width: 900px) {
+  .app { flex-direction: column; }
+  .controls { width: 100%; }
+}
